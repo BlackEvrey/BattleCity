@@ -39,6 +39,7 @@ int main(void)
         return -1;
     }
 
+    /* Does not allow run OpenGL below 4.6.0 version */
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -52,6 +53,7 @@ int main(void)
         return -1;
     }
 
+    /* Registrates callbacks */
     glfwSetWindowSizeCallback(pWindow, glfwWindowSizeCallback);
     glfwSetKeyCallback(pWindow, glfwKeyCallback);
 
@@ -64,6 +66,7 @@ int main(void)
 		return -1;
 	}
 
+    /* Displays renderer and OpenGL versions */
     std::cout << "Render: " << glGetString(GL_RENDERER) << std::endl;
     std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
