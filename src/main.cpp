@@ -3,9 +3,16 @@
 
 #include <iostream>
 
+/* Nvidia instead of Intel */
+extern "C"
+{
+    _declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+}
+
 int g_windowSizeX = 640;
 int g_windowSizeY = 480;
 
+/* Code reacting to window size changing */
 void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int heigth)
 {
     g_windowSizeX = width;
@@ -13,8 +20,10 @@ void glfwWindowSizeCallback(GLFWwindow* pWindow, int width, int heigth)
     glViewport(0, 0, g_windowSizeX, g_windowSizeY);
 }
 
+/* Code reacting to keys pressing */
 void glfwKeyCallback(GLFWwindow* pWindow, int key, int scancode, int action, int mode)
-{
+{   
+    /* Press ESCAPE to leave window */
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(pWindow, GL_TRUE);
